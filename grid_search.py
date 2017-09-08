@@ -10,7 +10,7 @@ from mnist_classifier import MnistClassifier
 
 
 #%%
-data_dir = '../Day3_MNIST/mnist'
+data_dir = './mnist'
 t_images, t_labels = load_mnist_t10k(data_dir)
 t_images = t_images / 127.0 - 1.0
 t_images = np.reshape(t_images,[-1,28*28])

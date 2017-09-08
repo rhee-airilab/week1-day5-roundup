@@ -8,7 +8,7 @@ from __future__ import print_function, division, absolute_import
 import tensorflow as tf
 import numpy as np
 
-data_dir = '../Day3_MNIST/mnist'
+data_dir = './mnist'
 data_dir
 
 images = np.fromfile(data_dir + '/train-images-idx3-ubyte',dtype=np.uint8)

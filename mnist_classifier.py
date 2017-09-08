@@ -8,7 +8,7 @@ import sklearn
 
 from mnist_data import load_mnist
 
-data_dir = '../Day3_MNIST/mnist'
+data_dir = './mnist'
 train_size = 60000
 images, labels = load_mnist(data_dir)
 images = images / 127.0 - 1.0
