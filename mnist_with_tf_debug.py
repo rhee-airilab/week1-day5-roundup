@@ -8,6 +8,8 @@ from __future__ import print_function, division, absolute_import
 import tensorflow as tf
 import numpy as np
 
+DEBUG_   = False
+
 data_dir = './mnist'
 data_dir
 
@@ -67,8 +69,9 @@ def train(max_epochs=20):
     config = tf.ConfigProto(gpu_options={'allow_growth': True})
     with tf.Session(config=config) as session:
 
-        session = tf_debug.LocalCLIDebugWrapperSession(session)
-        session.add_tensor_filter('has_inf_or_nan', tf_debug.has_inf_or_nan)
+        if DEBUG_:
+            session = tf_debug.LocalCLIDebugWrapperSession(session)
+            session.add_tensor_filter('has_inf_or_nan', tf_debug.has_inf_or_nan)
     
         session.run(tf.global_variables_initializer())
         for ep in range(max_epochs):
@@ -126,5 +129,8 @@ def infer(image, label=None):
 
 
 if __name__ == '__main__':
+    import sys
+    if '--debug' in sys.argv[1:]:
+        DEBUG_ = True
     train(20)
     infer(images[1234],labels[1234])
